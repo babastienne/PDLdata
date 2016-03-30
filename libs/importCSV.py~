@@ -1,0 +1,10 @@
+import csv
+
+with open('../datas/activite.csv', 'r') as csvfile:
+    	#fieldnames = ['situation', 'id', 'commentaire']
+	monRead = csv.csv.DictWriter(csvfile, fieldnames=fieldnames)
+	for row in monRead:
+    		 #print  (', '.join(row))
+		 print (row['first_name'])
+		
+
