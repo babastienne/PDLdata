@@ -4,12 +4,16 @@ import classeActivite
 import classeEquipement
 import classeInstallation
 
+def initDataTable(dataTableFile):
+''' This method remove all the existings tables in the dataBase and create new tables.
+	The created tables are empty.
 
-with open('../datas/activite.csv', 'r') as csvfile:
-	conn = sqlite3.connect('ma_base.db') # Allow the creation of database
-	cursor = conn.cursor()
+	TODO : implement tests
+'''
+	connexion = sqlite3.connect(dataTableFile) # Connexion to the database
+	cursor = connexion.cursor()
 	
-	# Delete tables in database, allow us to do some test.
+	# Delete tables in database, for a new clean creation
 	cursor.execute("""
 	DROP TABLE activite
 	""")
@@ -19,7 +23,7 @@ with open('../datas/activite.csv', 'r') as csvfile:
 	cursor.execute("""
 	DROP TABLE installation
 	""")
-	conn.commit()	
+	conn.commit() # commit the modifications
 	# End Delete tables
 
 	# Table Creation
@@ -50,8 +54,27 @@ with open('../datas/activite.csv', 'r') as csvfile:
 	     codePostal TEXT
 	)
 	""")
-	conn.commit()
+
+	conn.commit() # commit the creation of tables
 	# End Table Creation
+
+def importDataInTable(pathToCsvFile, fieldnames):
+	with open(pathToCsvFile, 'r') as csvfile:
+		myRead = csv.DictReader(csvfile, fieldnames=fieldnames)
+		for row in myRead:
+			boolean = true
+			for i in row:
+				if not i:
+					boolean = false
+			myActivity = classeActivite.activite(row[fieldnames[0]],row[fieldnames[1]],row[fieldnames[2]],row[fieldnames[3]],row[fieldnames[4]]) 
+			if myActivity.actLib != "" and myActivity.equipementid and myActivity.comLib and myActivity.actCode and myActivity.actNivLib: 
+				cursor.execute("INSERT INTO activite(equipementid,comLib,actLib,actCode,actNivLib) VALUES(?, ?, ?, ?, ? )", (myActivity.equipementid,myActivity.comLib,myActivity.actLib,myActivity.actCode,myActivity.actNivLib))
+	csvfile.close()
+
+
+################################################################# OLD ##########################
+with open('../datas/activite.csv', 'r') as csvfile:
+	
 
 # Data import from activite.csv
 	fieldnames = ['ComInsee','comLib', 'Equipementid', 'EqunbEquIdentique', 'ActCode', 'ActLib', 'EquActivitePraticable','EquActivitePratique', 'EquActiviteSalleSpe', 'ActNivLib'] # On associe chaque colonne à un nom
@@ -61,7 +84,7 @@ with open('../datas/activite.csv', 'r') as csvfile:
 		if accumulator > 0:	
 			myActivity = classeActivite.activite(row['Equipementid'],row['comLib'],row['ActLib'],row['ActCode'],row['ActNivLib']) 
 			if myActivity.actLib != "" and myActivity.equipementid and myActivity.comLib and myActivity.actCode and myActivity.actNivLib: 
-				cursor.execute("INSERT INTO activite(equipementid,comLib,actLib,actCode,actNivLib) VALUES({0}, \"{1}\", \"{2}\", {3}, \"{4}\")".format(myActivity.equipementid,myActivity.comLib,myActivity.actLib,myActivity.actCode,myActivity.actNivLib))
+				cursor.execute("INSERT INTO activite(equipementid,comLib,actLib,actCode,actNivLib) VALUES(?, ?, ?, ?, ?)", (myActivity.equipementid,myActivity.comLib,myActivity.actLib,myActivity.actCode,myActivity.actNivLib))
 		accumulator = accumulator + 1
 	csvfile.close()
 # End data import from activite.csv
@@ -100,3 +123,6 @@ with open('../datas/installations.csv', 'r') as csvfile:
 # End fin gestion fichier installation
 
 
+initDataTable('ma_base.db')
+
+importDataInTable('../datas/activite.csv', ['ComInsee','comLib', 'Equipementid', 'EqunbEquIdentique', 'ActCode', 'ActLib', 'EquActivitePraticable','EquActivitePratique', 'EquActiviteSalleSpe', 'ActNivLib'])
