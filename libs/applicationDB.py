@@ -1,9 +1,7 @@
-import coBD
-import classeActivite
+import dao
 
 def __init__(self):
-    
-
+    #TODO
 
 def initDataBase():
     dao = coBD.Dao("julien", "julien", "pdl.db") # creation of the dataBase
