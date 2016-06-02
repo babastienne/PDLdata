@@ -1,19 +1,22 @@
 class DataClass :
-	""" Classe qui permet de lier un file csv à une table sql
-	et définir les attributs que l'on souhaite insérer dans la table
-	Chaque table dans la base de données correspond à une classe de type DataClass """
+	""" Class wich contain the path to a csv file, his name and the attributs of his rows.
+	Each table in the dataBase has a dataClass corresponding in the beginning """
 
 	def __init__(self, file, table, attributs) :
-
+		""" Contructor of the class"""
+		self.attributs = attributs
 		self.file = file
 		self.table = table
-		self.attributs = attributs
-
-	def getFichier(self) :
-		return self.file
-
-	def getNomTable(self) :
-		return self.table
 
 	def getAttributs(self) :
+		""" Getter for the list containing informations about
+		the rows in the csv file (and the database) """
 		return self.attributs
+
+	def getFile(self) :
+		""" Getter returning the path to the csv file """
+		return self.file
+
+	def getTableName(self) :
+		""" Getter returning the name of the Table/Class """
+		return self.table

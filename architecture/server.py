@@ -1,5 +1,5 @@
-from db.bottle.bottle import route, run, debug, template, post, request, static_file
-from insert.traitement import Traitement
+from web.bottle.bottle import *
+from db.Requests import Requests
 
 
 """/*
@@ -8,39 +8,41 @@ from insert.traitement import Traitement
 */"""
 @route('/')
 def index():
-    t = Traitement()
-    activites = t.getActivites()
-    villes = t.getVilles()
-    output = template('db/index', activites = activites, villes = villes)
+    r = Requests()
+    activity = r.getActivity()
+    city = r.getCity()
+    output = template('web/index', activity = activity, city = city)
     return output
 
 
-"""/*
-    Function: result
-    After selecting the activity and the city, this page will print the result matching the city and the activity wanted
-*/"""
+""" This function 'result' is called after the main screen. It show or not the result of the request """
 @route('/result', method = 'POST')
 def result():
-        activite = request.forms.get('activite')
-        ville = request.forms.get('ville')
-        t = Traitement()
-        installations = t.getInstallations(activite, ville)
-        if len(installations) > 0:
-            output = template('db/affichageIns', installations = installations)
-        else:
-            output = template('db/affichageResultNull')
-        return output
+    r = Requests()
+    city = request.forms.get('city')
+    activity = request.forms.get('activity')
 
-"""/*
-    Function: css
-    This function will return the css file
-*/"""
+    installations = r.getInstallations(activity, city)
+    if len(installations) > 0:
+        output = template('web/displayInstallations', instal = installations)
+    else:
+        output = template('web/displayNoResult')
+    return output
+
+
+""" Those functions are used to complete the html (contains scripts, css, img ...)
+    The semantic files are issues of this github project : https://github.com/Semantic-Org/Semantic-UI-CSS"""
 @route("/semantic/<filename>")
 def semantic(filename):
-    return static_file(filename, root='db/semantic/')
+    return static_file(filename, root='web/semantic/')
+
+@route("/static/<filename>")
+def serve_static(filename):
+	return static_file(filename,root="web/static/")
 
 @route("/scripts/<filename>")
-def semantic(filename):
-    return static_file(filename, root='db/scripts/')
+def script(filename):
+    return static_file(filename, root='web/scripts/')
 
-run(host="localhost", port=8080, debug=True)
+#Run the server on the port 8080 at the localhost adress.
+run(host="localhost", port=8080, debug=False)

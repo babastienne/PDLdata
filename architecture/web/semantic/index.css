@@ -1,0 +1,78 @@
+body{
+	background: #FFE4C4;
+}
+
+label {
+	color:black;
+    text-transform: capitalize;
+    padding-left:25%;
+}
+h4 {
+	text-align: center;
+}
+img {
+	padding-left:10%;
+}
+legend
+{
+  margin-bottom:0px;
+  margin-left:16px;
+}
+fieldset
+{
+  border:3px solid black;
+  -moz-border-radius:8px;
+  -webkit-border-radius:8px;
+  border-radius:8px;
+	background-color:#CCC;
+	max-width:500px;
+	padding:16px;
+	margin: auto;
+}
+
+table {
+	margin: auto;
+}
+
+#englobeTout {
+	width : 50%;
+	margin : auto;
+}
+#txt {
+	color:red;
+}
+#txtTitre{
+	text-align: center;
+	border: 3px black inset;
+	margin : auto;
+}
+#sel1, #sel2{
+	background-color:#E4EFFF;
+	border:1px solid #9FC6FF;
+	padding:5px;
+	-moz-border-radius:10px 0;
+	-webkit-border-radius:10px 0;
+	border-radius:10px 0;
+}
+#sent {
+	cursor:pointer
+	background-color:#E4EFFF;
+	border:1px solid #9FC6FF;
+	padding:10px;
+	-moz-border-radius:10px 0;
+	-webkit-border-radius:10px 0;
+	border-radius:15px 0;
+}
+#contenerInfos {
+	text-align: center;
+	margin: auto;
+}
+
+.opt1, .opt2, {
+		    cursor:pointer
+}
+
+.DivPlacementForm {
+	width : 50%;
+	margin : auto;
+}

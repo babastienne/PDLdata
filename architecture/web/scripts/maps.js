@@ -1,3 +1,8 @@
+/*
+  maps.js created from this website http://leafletjs.com/ which show
+  tips for the implementation of the OpenStreetMap
+  */
+
 var mymap = $('mapid');
 $('document').ready(function(){
     var mapSet = false;
@@ -10,6 +15,7 @@ $('document').ready(function(){
         addToMap([tds.eq(2).text(),tds.eq(1).text()],tds.eq(0).text()+'<br/>'+tds.eq(3).text()+" "+tds.eq(4).text()+" "+tds.eq(5).text());
     });
 });
+
 function mapInit(coordonates){
     mymap = L.map('mapid').setView(coordonates, 11);
     L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
@@ -17,6 +23,7 @@ function mapInit(coordonates){
             maxZoom: 18,
             }).addTo(mymap);
 }
+
 function addToMap(coordonates, informations){
     var marker = L.marker(coordonates).addTo(mymap);
     marker.bindPopup(informations).openPopup();
