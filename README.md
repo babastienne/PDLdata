@@ -1,45 +1,45 @@
 #PDLData
 
-Ce projet a pour but d'utiliser les données de la région Pays de la Loire concernant l'ensemble des activités et complexes de loisirs disponibles sur le territoire régional.
+This project use the open data of the 'Pays de la Loire' state which concern the all activities and entertainment complexes available in the regional territory.
 
-## Fonctionnement
+## How it works
 
-Le projet fonctionne en utilisant un serveur python (bottle) et en utilisant une base de données SQL. La base de donnée est complétée à l'aide de fichiers CSV.
+This project works with a python server (Bottle library) et use a SQL database. The database is build from the three CSV files which represent the data of the region. 
 
-### Lancement du site
+### Launch the website
 
-Pour télécharger le dépôt PDLData :
+For clone the PDLData repository :
 
 > git clone https://github.com/babastienne/PDLdata.git
 
-Ensuite, aller dans le dossier PDLData et lancer le site internet :
+Then, go to the PDLData repostory and launch the server :
 
 > cd PDLdata/
 > python3 server.py
 
-Vous pouvez à présent accéder au site internet via l'adresse http://localhost:8080/
+You can now access to the website at this adress : http://localhost:8080/
 
-### Création de la base de donnée
+### Creation of the database from CSV files.
 
-La base de données nommée 'PDLData.db' est disponible au chemin suivant : ./architecture/db/PDLData.db
-La base de données est créée à partir de 3 fichiers csv disponible au chemin suivant : ./data/\*.csv
+The database is called 'PDLData.db' and is available at the path : ./architecture/db/PDLData.db
+The database is build from 3 CSV files availables at this path : ./data/\*.csv
 
-Note : Les fichiers csv utilisés sont disponibles via l'API de la région à l'adresse suivante :
+Tips : The CSV files used are available at the following adress (it's the open data of the region) :
 - Installations : http://data.paysdelaloire.fr/donnees/detail/equipements-sportifs-espaces-et-sites-de-pratiques-en-pays-de-la-loire-fiches-installations/
 - Activites : http://data.paysdelaloire.fr/donnees/detail/equipements-sportifs-espaces-et-sites-de-pratiques-en-pays-de-la-loire-activites-des-fiches-equ/
 - Equipements : http://data.paysdelaloire.fr/donnees/detail/equipements-sportifs-espaces-et-sites-de-pratiques-en-pays-de-la-loire-fiches-equipements/
 
-Si la BD est manquante ou que vous souhaitez l'avez supprimée, vous pouvez la recréer à l'aide de la commande suivante :
+If the database is missing or you want to delete it, you can recreate the it with the following commands :
 
 > cd /architecture/db/
 > python3 Application.py
 
-## Problèmes potentiels
+## Potential problems
 
-Pour le bon fonctionnement du projet, l'utilisateur doit posséder SQLite3 sur son PC. Le projet utilise également des ressources Javascript potentiellement non compatibles avec certains navigateurs web (anciennes version de IE notamment).
+For the proper functioning of the project, the user must have SQLite3 on his PC. The project also uses potentially incompatible Javascript resources with some web browsers (older versions of IE in particular).
 
-Les bibliothèques Bottle, JQuery ainsi que Semantic sont incorporées au projet. En cas de suppression de celles-ci le programme ne pourra fonctionner correctement.
+Bottle libraries, JQuery and Semantic are incorporated in the project. If deleting them the program can't work properly.
 
 ## Credits
 
-Ce projet a été créé par binome à l'IUT de Nantes en 2016 dans le cadre du module 'Technologies pour la production de logiciels'. 
+This project was created at the Nantes IUT of IT in 2016 for the module 'Technologies for Software Production'. 
