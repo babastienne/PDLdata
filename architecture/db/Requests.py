@@ -14,6 +14,8 @@ class Requests(object):
 			return self.dao.select("SELECT `ActLib`, `Numero de la voie`,`Nom de la voie`, `Code postal`, `Nom usuel de l installation`, EquGpsX , EquGpsY from installations, (select EquipementId, InsNumeroInstall , EquGpsX, EquGpsY from equipements where equipements.EquipementId in (select EquipementId from activity where ComInsee = "+ city +"))  equ, activity act where installations.`Numéro de l installation` = equ.InsNumeroInstall and act.`EquipementId` = equ.`EquipementId` ORDER BY `ActLib`")
 		if(activity != "" and city == ""):
 			return self.dao.select("SELECT `Nom usuel de l installation`, `Numero de la voie`,`Nom de la voie`, `Code postal`, `Nom de la commune`, EquGpsX , EquGpsY from installations, (select EquipementId, InsNumeroInstall , EquGpsX, EquGpsY from equipements where equipements.EquipementId in (select EquipementId from activity where ActCode = "+ activity +"))  equ, activity act where installations.`Numéro de l installation` = equ.InsNumeroInstall and act.`EquipementId` = equ.`EquipementId` ORDER BY `ActLib`")
+		if(activity == "" and city == ""):
+			return ""
 		else:
 			return self.dao.select("SELECT `Nom usuel de l installation`, `Numero de la voie`,`Nom de la voie`, `Code postal`, `Nom de la commune`, EquGpsX , EquGpsY from installations, (select InsNumeroInstall , EquGpsX, EquGpsY from equipements where equipements.EquipementId in (select EquipementId from activity where ActCode = "+ activity +" and ComInsee = "+ city +"))  equ where installations.`Numéro de l installation` = equ.InsNumeroInstall")
 
