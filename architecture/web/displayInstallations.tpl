@@ -4,20 +4,14 @@
   <script src="scripts/jquery-1.12.1.min.js"></script>
   <script src="scripts/maps.js"></script>
 
-  <link rel="stylesheet" href="semantic/semantic.css" />
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+  <link rel="stylesheet" href="style/map.css" />
+
 </head>
 <body>
+<h1> Vue des Equipements via une maap</h1>
 <div style="width:80%; margin:auto" align="center">
-<div class="ui middle gridequal width center aligned padded grid">
-%for ins in instal:
-    <div class="olive five wide column">{{ins[0]}}</div>
-    <div class="black one wide column">{{ins[1]}}</div>
-    <div class="olive four wide column">{{ins[2]}}</div>
-    <div class="black two wide column">{{ins[3]}}</div>
-    <div class="olive four wide column">{{ins[4]}}</div>
-%end
-</div>
+
 <div id="mapid" style="height:500px">
 </div>
 </div>
@@ -32,5 +26,11 @@
 <td>{{ins[3]}}</td>
 </tr>
 %end
+<h2> Les différents équipements pour l'activité et la ville sélectioné, ci dessous : </h2>
+<div class="ui middle gridequal width center aligned padded grid">
+%for ins in instal:
+    <div id="affichage"><p >{{ins[0]}} - {{ins[1]}}  - {{ins[2]}} - {{ins[3]}} - {{ins[4]}}</p></div>
+%end
+</div>
 </body>
 </html>

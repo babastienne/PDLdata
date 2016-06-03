@@ -1,0 +1,16 @@
+body{
+	background: #FFE4C4;
+}
+#affichage{
+	width : 50%;
+	margin : auto;
+	    border: 3px black inset;
+}
+
+h1 {
+	text-align: center;
+}
+
+h2 {
+	text-align: center;
+}

@@ -44,8 +44,15 @@
 				</tr>
 			</table></br></br></br>
 	</div>
-		<h4>Site réalisé dans le cadre d'un projet du module : Technologies pour la production de logiciels
+		<h4>Site réalisé dans le cadre d'un projet de la matière : Technologies pour la production de logiciels
 		</h4>
 	</div>
 </body>
 </html>
+
+
+
+
+
+
+
