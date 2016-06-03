@@ -32,13 +32,17 @@ def result():
 
 """ Those functions are used to complete the html (contains scripts, css, img ...)
     The semantic files are issues of this github project : https://github.com/Semantic-Org/Semantic-UI-CSS"""
+@route("/style/<filename>")
+def style(filename):
+    return static_file(filename, root='web/style/')
+
 @route("/semantic/<filename>")
 def semantic(filename):
     return static_file(filename, root='web/semantic/')
 
-@route("/static/<filename>")
-def serve_static(filename):
-	return static_file(filename,root="web/static/")
+@route("/img/<filename>")
+def img(filename):
+	return static_file(filename,root="web/img/")
 
 @route("/scripts/<filename>")
 def script(filename):

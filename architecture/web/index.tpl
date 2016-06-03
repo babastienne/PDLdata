@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="semantic/index.css" />
+    <link rel="stylesheet" href="style/index.css" />
 </head>
 <body>
 
@@ -37,10 +37,10 @@
 		</br></br>
 			<table>
 				<tr>
-					<td> <img src="static/sport2.png" alt="Sport2" style="width:304px;height:228px;"></td>
-					<td> <img src="static/sport3.jpg" alt="Sport3" style="width:304px;height:228px;"></td>
-					<td> <img src="static/sport4.jpg" alt="Sport4" style="width:304px;height:228px;"></td>
-					<td> <img src="static/sport5.png" alt="Sport5" style="width:304px;height:228px;"></td>
+					<td> <img src="img/sport2.png" alt="Sport2" style="width:304px;height:228px;"></td>
+					<td> <img src="img/sport3.jpg" alt="Sport3" style="width:304px;height:228px;"></td>
+					<td> <img src="img/sport4.jpg" alt="Sport4" style="width:304px;height:228px;"></td>
+					<td> <img src="img/sport5.png" alt="Sport5" style="width:304px;height:228px;"></td>
 				</tr>
 			</table></br></br></br>
 	</div>
