@@ -2,10 +2,9 @@ from web.bottle.bottle import *
 from db.Requests import Requests
 
 
-"""/*
-    Function: index
-    This will be the home page of the server, it will display all the activities and the city in the database
-*/"""
+""" This function is the route to the main screen (index.tpl).
+    For the initialization the server get all the activities and city and
+    put them in parameters for the template. """
 @route('/')
 def index():
     r = Requests()
@@ -35,10 +34,6 @@ def result():
 @route("/style/<filename>")
 def style(filename):
     return static_file(filename, root='web/style/')
-
-@route("/semantic/<filename>")
-def semantic(filename):
-    return static_file(filename, root='web/semantic/')
 
 @route("/img/<filename>")
 def img(filename):
