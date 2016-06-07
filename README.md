@@ -14,8 +14,8 @@ For clone the PDLData repository :
 
 Then, go to the PDLData repostory and launch the server :
 
-> cd PDLdata/
-> python3 server.py
+    cd PDLdata/
+    python3 server.py
 
 You can now access to the website at this adress : http://localhost:8080/
 
@@ -31,8 +31,8 @@ Tips : The CSV files used are available at the following adress (it's the open d
 
 If the database is missing or you want to delete it, you can recreate the it with the following commands :
 
-> cd /architecture/db/
-> python3 Application.py
+    cd /architecture/db/
+    python3 Application.py
 
 ## Potential problems
 
